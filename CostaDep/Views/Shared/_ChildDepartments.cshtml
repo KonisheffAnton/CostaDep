@@ -1,0 +1,29 @@
+﻿@model IEnumerable<DepartmentViewModel>
+
+
+    @foreach (var department in Model)
+    {
+        <li>
+            @department.Name
+            @department.Code
+        @if (department.ChildDepartments.Count > 0)
+            {
+                <ul>
+                    @foreach (var childDepartment in department.ChildDepartments)
+                    {
+                        <li>
+                            @childDepartment.Name
+                            @childDepartment.Code
+                            @if (childDepartment.ChildDepartments.Count > 0)
+                            {
+                            <ul>
+                                <partial name="_ChildDepartments" model="childDepartment.ChildDepartments" />
+                            </ul>
+                            }
+                        </li>
+                    }
+                </ul>
+            }
+        </li>
+    }
+

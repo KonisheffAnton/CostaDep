@@ -1,0 +1,44 @@
+﻿@model Costa.Entities.Department
+
+<h2>Создание нового департамента</h2>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="ParentDepartmentId">Родительский департамент:</label>
+        <select asp-for="ParentDepartmentId" asp-items="@(new SelectList(ViewBag.Departments, "Id", "Name"))">
+            <option value="">Выберите родительский департамент</option>
+        </select>
+        <span asp-validation-for="ParentDepartmentId" class="text-danger"></span>
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="Code">Код:</label>
+        <input asp-for="Code" class="form-control" />
+        <span asp-validation-for="Code" class="text-danger"></span>
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="Name">Название:</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    
+@*    <div class="form-group">
+        <label>Дочерние департаменты:</label>
+        <select asp-for="ChildDepartments" multiple class="form-control">
+            @foreach (var department in ViewBag.Departments)
+            {
+                <option value="@department.Id">@department.Name</option>
+            }
+            <option value="">---</option>
+        </select>
+        <span asp-validation-for="ChildDepartments" class="text-danger"></span>
+    </div>*@
+    
+    <div class="form-group">
+        <input type="submit" value="Создать" class="btn btn-primary" />
+        <a asp-action="DepartmentList" class="btn btn-secondary">Отмена</a>
+    </div>
+</form>
+
+

@@ -1,0 +1,20 @@
+﻿@model IEnumerable<Costa.Models.DepartmentViewModel>
+
+<h1>Department Structure</h1>
+<ul>
+        @foreach (var department in Model)
+        {
+    <li>
+                @department.Code
+                @department.Name
+            @if (department.ChildDepartments.Count > 0)
+            {
+                <ul>
+                        @{
+                            await Html.RenderPartialAsync("_ChildDepartments", department.ChildDepartments);
+                        }
+                </ul>
+            }
+     </li>
+        }
+</ul>            
