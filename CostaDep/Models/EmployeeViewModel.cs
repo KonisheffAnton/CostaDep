@@ -35,7 +35,7 @@ namespace Costa.Models
         [MaxLength(50)]
         public string Position { get; set; }
 
-        public SelectList DepartmentList { get; set; }
+        public SelectList? DepartmentList { get; set; }
 
         public int SelectedDepartment { get; set; }
     }

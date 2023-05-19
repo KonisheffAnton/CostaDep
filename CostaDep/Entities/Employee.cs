@@ -6,10 +6,8 @@ namespace Costa.Entities
 {
     public class Employee
     {
-        [Required]
         public int Id { get; set; }
 
-        [Required]
         public int DepartmentId { get; set; }
 
         [Required]

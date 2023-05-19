@@ -13,19 +13,19 @@
     
     <div class="form-group">
         <label asp-for="Code">Код:</label>
-        <input asp-for="Code" class="form-control" />
+        <input asp-for="Code" />
         <span asp-validation-for="Code" class="text-danger"></span>
     </div>
     
     <div class="form-group">
         <label asp-for="Name">Название:</label>
-        <input asp-for="Name" class="form-control" />
+        <input asp-for="Name" />
         <span asp-validation-for="Name" class="text-danger"></span>
     </div>
     
 @*    <div class="form-group">
         <label>Дочерние департаменты:</label>
-        <select asp-for="ChildDepartments" multiple class="form-control">
+        <select asp-for="ChildDepartments" multiple>
             @foreach (var department in ViewBag.Departments)
             {
                 <option value="@department.Id">@department.Name</option>
@@ -36,8 +36,8 @@
     </div>*@
     
     <div class="form-group">
-        <input type="submit" value="Создать" class="btn btn-primary" />
-        <a asp-action="DepartmentList" class="btn btn-secondary">Отмена</a>
+        <input type="submit" value="Создать" class="btn" />
+        <a class="btn" asp-action="DepartmentList" class="btn">Отмена</a>
     </div>
 </form>
 

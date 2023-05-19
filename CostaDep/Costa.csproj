@@ -7,27 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="Views\Department\Create.cshtml" />
-    <None Include="Views\Department\Delete.cshtml" />
-    <None Include="Views\Department\DepartmentList.cshtml" />
-    <None Include="Views\Department\Edit.cshtml" />
-    <None Include="Views\Employee\Create.cshtml" />
-    <None Include="Views\Employee\Delete.cshtml" />
-    <None Include="Views\Employee\Edit.cshtml" />
-    <None Include="Views\Employee\EployeesByDepartment.cshtml" />
-    <None Include="Views\Home\Index.cshtml" />
-    <None Include="Views\Shared\Error.cshtml" />
-    <None Include="Views\Shared\_ChildDepartments.cshtml" />
-    <None Include="Views\Shared\_Layout.cshtml" />
-    <None Include="Views\Shared\_ValidationScriptsPartial.cshtml" />
-    <None Include="Views\_ViewImports.cshtml" />
-    <None Include="Views\_ViewStart.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.5" />
   </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1development_1json__JsonSchema="" appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
 
 </Project>

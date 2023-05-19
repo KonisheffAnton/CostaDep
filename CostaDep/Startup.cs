@@ -10,6 +10,7 @@ using System;
 using Costa.Models.Validation;
 using FluentValidation.AspNetCore;
 using AutoMapper;
+using Microsoft.Data.SqlClient;
 
 namespace Costa
 {

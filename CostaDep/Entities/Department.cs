@@ -7,7 +7,6 @@ namespace Costa.Entities
 {
     public class Department
     {
-        [Required]
         public int Id { get; set; }
 
         public int? ParentDepartmentId { get; set; }
@@ -20,7 +19,7 @@ namespace Costa.Entities
         [MaxLength(100)]
         public string Name { get; set; }
 
-        public Department ParentDepartment { get; set; }
+        public Department? ParentDepartment { get; set; }
 
         public ICollection<Employee> Employees { get; set; }
 

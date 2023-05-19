@@ -5,8 +5,8 @@
         @foreach (var department in Model)
         {
     <li>
-                @department.Code
                 @department.Name
+                @department.Code
             @if (department.ChildDepartments.Count > 0)
             {
                 <ul>

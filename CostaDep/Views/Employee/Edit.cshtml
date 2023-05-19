@@ -8,56 +8,55 @@
 
     <div class="form-group">
         <label asp-for="SurName">Фамилия</label>
-        <input asp-for="SurName" class="form-control" />
+        <input asp-for="SurName" />
         <span asp-validation-for="SurName" class="text-danger"></span>
     </div>
 
     <div class="form-group">
         <label asp-for="FirstName">Имя</label>
-        <input asp-for="FirstName" class="form-control" />
+        <input asp-for="FirstName" />
         <span asp-validation-for="FirstName" class="text-danger"></span>
     </div>
 
     <div class="form-group">
         <label asp-for="Patronymic">Отчество</label>
-        <input asp-for="Patronymic" class="form-control" />
+        <input asp-for="Patronymic" />
         <span asp-validation-for="Patronymic" class="text-danger"></span>
     </div>
 
     <div class="form-group">
         <label asp-for="DateOfBirth">Дата рождения</label>
-        <input asp-for="DateOfBirth" class="form-control" />
+        <input asp-for="DateOfBirth" />
         <span asp-validation-for="DateOfBirth" class="text-danger"></span>
     </div>
 
     <div class="form-group">
         <label asp-for="DocSeries">Серия документа</label>
-        <input asp-for="DocSeries" class="form-control" />
+        <input asp-for="DocSeries" />
         <span asp-validation-for="DocSeries" class="text-danger"></span>
     </div>
 
     <div class="form-group">
         <label asp-for="DocNumber">Номер документа</label>
-        <input asp-for="DocNumber" class="form-control" />
+        <input asp-for="DocNumber" />
         <span asp-validation-for="DocNumber" class="text-danger"></span>
     </div>
 
     <div class="form-group">
         <label asp-for="Position">Должность</label>
-        <input asp-for="Position" class="form-control" />
+        <input asp-for="Position" />
         <span asp-validation-for="Position" class="text-danger"></span>
     </div>
 
     <div class="form-group">
         <label asp-for="DepartmentId">Департамент:</label>
-        <select class="form-control" asp-for="DepartmentId" asp-items="@(new SelectList(ViewBag.Departments, "Id", "Name"))">
-            <option value="">Выберите департамент</option>
+        <select asp-for="DepartmentId" asp-items="@(new SelectList(ViewBag.Departments, "Id", "Name"))">
         </select>
         <span asp-validation-for="DepartmentId" class="text-danger"></span>
     </div>
 
     <div class="form-group">
-        <input type="submit" value="Сохранить" class="btn btn-primary" />
-        <a asp-action="EmployeesByDepartment" class="btn btn-secondary">Отмена</a>
+        <input type="submit" value="Сохранить" class="btn" />
+        <a asp-action="EmployeesByDepartment" class="btn">Отмена</a>
     </div>
 </form>

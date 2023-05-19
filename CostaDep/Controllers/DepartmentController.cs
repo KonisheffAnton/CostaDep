@@ -59,7 +59,7 @@ namespace Costa.Controllers
                 return NotFound();
             }
 
-            ViewBag.Departments = await _context.Departments.ToListAsync();
+            ViewBag.Departments = await _context.Departments.Where(dep=>dep.Id!=id).ToListAsync();
 
             return View(department);
         }
