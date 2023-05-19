@@ -22,7 +22,7 @@ namespace Costa.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var departments = _context.Departments.ToList();
+            var departments = _context.Departments.AsQueryable().ToList();
 
             var departmentViewModels = departments
                 .Where(d => d.ParentDepartmentId == null)

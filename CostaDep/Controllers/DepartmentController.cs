@@ -23,15 +23,17 @@ namespace Costa.Controllers
             _mapper = mapper;
         }
 
+        [HttpGet]
         public async Task<IActionResult> DepartmentList()
         {
             var department = await _context.Departments.AsQueryable().ToListAsync();
             return View(department);
         }
 
+        [HttpGet]
         public IActionResult Create()
         {
-            var departments = _context.Departments.FromSqlRaw("SELECT * FROM Departments").ToList();
+            var departments = _context.Departments.AsQueryable().ToList();
             ViewBag.Departments = departments;
             return View();
         }
@@ -46,11 +48,12 @@ namespace Costa.Controllers
                 return RedirectToAction("DepartmentList");
             }
 
-            var departments = _context.Departments.ToList();
+            var departments = _context.Departments.AsQueryable().ToList();
             ViewBag.Departments = departments;
             return View(department);
         }
 
+        [HttpGet]
         public async Task<IActionResult> Edit(int? id)
         {
             var department = await _context.Departments.FindAsync(id);
