@@ -11,6 +11,7 @@ using Costa.Models.Validation;
 using FluentValidation.AspNetCore;
 using AutoMapper;
 using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Options;
 
 namespace Costa
 {
@@ -26,8 +27,8 @@ namespace Costa
      
         public void ConfigureServices(IServiceCollection services)
         {
-            string connection = Configuration.GetConnectionString("DefaultConnection");
-           
+            string connection = Configuration.GetConnectionString("SQLExpressTEST");
+
             services.AddDbContext<ApplicationContext>(options =>
                 options.UseSqlServer(connection));
             services.AddControllersWithViews();

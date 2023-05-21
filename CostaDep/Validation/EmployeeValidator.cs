@@ -1,10 +1,8 @@
-﻿using Costa.Entities;
-using FluentValidation;
-using System;
+﻿using FluentValidation;
 
 namespace Costa.Models.Validation
 {
-    public class EmployeeValidator : AbstractValidator<Employee>
+    public class EmployeeValidator : AbstractValidator<EmployeeViewModel>
     {
         public EmployeeValidator()
         {
@@ -14,7 +12,7 @@ namespace Costa.Models.Validation
 
             RuleFor(employee => employee.DateOfBirth)
     .InclusiveBetween(
-        new DateTime(1971, 1, 1), DateTime.Now.AddYears(-18));
+        DateTime.Now.AddYears(-65), DateTime.Now.AddYears(-18));
 
             RuleFor(employee => employee.Position).NotNull().NotEmpty().MaximumLength(50);
             RuleFor(employee => employee.DocNumber).NotNull().NotEmpty().MaximumLength(6);

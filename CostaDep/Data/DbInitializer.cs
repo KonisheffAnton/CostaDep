@@ -1,8 +1,4 @@
 ﻿using Costa.Entities;
-using Costa.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Costa.Data
 {
@@ -15,7 +11,7 @@ namespace Costa.Data
             var departments = new List<Department>();
             var employees = new List<Employee>();
 
-            if (!context.Departments.Any())
+            if (!context.Department.Any())
             {
                 for (int i = 1; i <= 9; i++)
                 {
@@ -32,12 +28,12 @@ namespace Costa.Data
                     }
 
                     departments.Add(department);
-                    context.Departments.Add(department);
+                    context.Department.Add(department);
                     context.SaveChanges();
                 }
             }
 
-            if (!context.Employees.Any())
+            if (!context.Employee.Any())
             {
                 for (int i = 0; i <= 9; i++)
                 {
@@ -55,7 +51,7 @@ namespace Costa.Data
 
                     employees.Add(employee);
                 }
-                context.Employees.AddRange(employees);
+                context.Employee.AddRange(employees);
                 context.SaveChanges();
             }
 

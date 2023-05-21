@@ -1,8 +1,7 @@
-﻿using Costa.Entities;
-using System.ComponentModel.DataAnnotations;
-using System;
+﻿using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc;
+using Costa.Validation;
 
 namespace Costa.Models
 {
@@ -11,7 +10,7 @@ namespace Costa.Models
         [HiddenInput]
         public int? EmployeeViewModelId { get; set; }
 
-        public int? DepartmentId { get; set; }
+        public Guid? DepartmentId { get; set; }
 
         [MaxLength(50)]
         public string SurName { get; set; }
@@ -20,10 +19,10 @@ namespace Costa.Models
         public string FirstName { get; set; }
 
         [MaxLength(50)]
-        public string Patronymic { get; set; }
+        public string? Patronymic { get; set; }
 
         [BindProperty, DataType(DataType.Date)]
-
+        [BirthTimeCastom]
         public DateTime DateOfBirth { get; set; }
 
         [MaxLength(4)]

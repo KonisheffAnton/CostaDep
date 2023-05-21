@@ -1,15 +1,16 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
-using Costa.Models;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Costa.Entities
 {
     public class Department
     {
-        public int Id { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
+        public Guid Id { get; set; }
 
-        public int? ParentDepartmentId { get; set; }
+        public Guid? ParentDepartmentId { get; set; }
 
         [Required]
         [MaxLength(10)]

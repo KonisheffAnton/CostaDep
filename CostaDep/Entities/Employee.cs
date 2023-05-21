@@ -1,14 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Costa.Entities
 {
+    [Table("Empoyee")]
     public class Employee
     {
-        public int Id { get; set; }
+        [Key]
+        public decimal Id { get; set; }
 
-        public int DepartmentId { get; set; }
+        public Guid DepartmentId { get; set; }
 
         [Required]
         [MaxLength(50)]
@@ -18,12 +20,11 @@ namespace Costa.Entities
         [MaxLength(50)]
         public string FirstName { get; set; }
 
-        [Required]
         [MaxLength(50)]
-        public string Patronymic { get; set; }
+        public string? Patronymic { get; set; }
 
         [Required]
-        [BindProperty, DataType(DataType.Date)]
+        [BindProperty, DataType(DataType.Date)]   
         public DateTime DateOfBirth { get; set; }
 
         [Required]

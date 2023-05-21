@@ -1,20 +1,15 @@
 ﻿using AutoMapper;
 using Costa.Data;
 using Costa.Entities;
-using Costa.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Costa.Controllers
 {
     public class DepartmentController : Controller
     {
 
-        private ApplicationContext _context;
+        private readonly ApplicationContext _context;
         private readonly IMapper _mapper;
 
         public DepartmentController(IMapper mapper, ApplicationContext context)
@@ -26,14 +21,14 @@ namespace Costa.Controllers
         [HttpGet]
         public async Task<IActionResult> DepartmentList()
         {
-            var department = await _context.Departments.AsQueryable().ToListAsync();
+            var department = await _context.Department.AsQueryable().ToListAsync();
             return View(department);
         }
 
         [HttpGet]
         public IActionResult Create()
         {
-            var departments = _context.Departments.AsQueryable().ToList();
+            var departments = _context.Department.AsQueryable().ToList();
             ViewBag.Departments = departments;
             return View();
         }
@@ -43,26 +38,26 @@ namespace Costa.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Departments.Add(department);
+                _context.Department.Add(department);
                 _context.SaveChanges();
                 return RedirectToAction("DepartmentList");
             }
 
-            var departments = _context.Departments.AsQueryable().ToList();
+            var departments = _context.Department.AsQueryable().ToList();
             ViewBag.Departments = departments;
             return View(department);
         }
 
         [HttpGet]
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(Guid? id)
         {
-            var department = await _context.Departments.FindAsync(id);
+            var department = await _context.Department.FindAsync(id);
             if (department == null)
             {
                 return NotFound();
             }
 
-            ViewBag.Departments = await _context.Departments.Where(dep=>dep.Id!=id).ToListAsync();
+            ViewBag.Departments = await _context.Department.Where(dep=>dep.Id!=id).ToListAsync();
 
             return View(department);
         }
@@ -72,7 +67,7 @@ namespace Costa.Controllers
         {
             if (ModelState.IsValid)
             {
-                var parentDepartment = await _context.Departments.FindAsync(department.ParentDepartmentId);
+                var parentDepartment = await _context.Department.FindAsync(department.ParentDepartmentId);
                 department.ParentDepartment = parentDepartment;
 
                 _context.Update(department);
@@ -81,19 +76,19 @@ namespace Costa.Controllers
                 return RedirectToAction("DepartmentList");
             }
 
-            ViewBag.Departments = await _context.Departments.ToListAsync();
+            ViewBag.Departments = await _context.Department.ToListAsync();
 
             return View(department);
         }
 
         [HttpGet]
         [ActionName("Delete")]
-        public async Task<IActionResult> ConfirmDelete(int? id)
+        public async Task<IActionResult> ConfirmDelete(Guid? id)
         {
             if (id != null)
             {
-                var department = await _context.Departments
-                    .FromSqlRaw("SELECT * FROM Departments WHERE Id = {0}", id).FirstOrDefaultAsync();
+                var department = await _context.Department
+                    .FromSqlRaw("SELECT * FROM Department WHERE Id = {0}", id).FirstOrDefaultAsync();
                 if (department != null)
                     return View(department);
             }
@@ -101,10 +96,10 @@ namespace Costa.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(Guid? id)
         {
 
-            var department = _context.Departments
+            var department = _context.Department
                 .Include(dep => dep.ChildDepartments)
                 .Include(dep => dep.Employees)
                 .FirstOrDefault(dep => dep.Id == id);
@@ -120,7 +115,7 @@ namespace Costa.Controllers
                 childDepartment.ParentDepartmentId = department.ParentDepartmentId;
             }
 
-            _context.Departments.Remove(department);
+            _context.Department.Remove(department);
             _context.SaveChanges();
 
             return RedirectToAction("DepartmentList");

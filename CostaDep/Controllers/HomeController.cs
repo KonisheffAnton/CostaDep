@@ -3,11 +3,6 @@ using Costa.Data;
 using Costa.Entities;
 using Costa.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Costa.Controllers
 {
@@ -22,7 +17,7 @@ namespace Costa.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var departments = _context.Departments.AsQueryable().ToList();
+            var departments = _context.Department.AsQueryable().ToList();
 
             var departmentViewModels = departments
                 .Where(d => d.ParentDepartmentId == null)
@@ -38,7 +33,7 @@ namespace Costa.Controllers
 
             return View(departmentViewModels);
         }
-        private static List<DepartmentViewModel> GetChildDepartments(int parentDepartmentId, IEnumerable<Department> departments)
+        private static List<DepartmentViewModel> GetChildDepartments(Guid parentDepartmentId, IEnumerable<Department> departments)
         {
             return departments
                 .Where(d => d.ParentDepartmentId == parentDepartmentId)

@@ -1,13 +1,12 @@
 ﻿using Costa.Entities;
-using System.Collections.Generic;
 
 namespace Costa.Models
 {
     public class DepartmentViewModel
     {
-        public int DepartmentViewModelId { get; set; }
+        public Guid DepartmentViewModelId { get; set; }
 
-        public int? ParentDepartmentId { get; set; }
+        public Guid? ParentDepartmentId { get; set; }
 
         public string Name { get; set; }
 

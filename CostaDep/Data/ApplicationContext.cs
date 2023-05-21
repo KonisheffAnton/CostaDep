@@ -1,5 +1,4 @@
 ﻿using Costa.Entities;
-using Costa.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Costa.Data
@@ -12,13 +11,13 @@ namespace Costa.Data
            
     }
 
-        public DbSet<Employee> Employees { get; set; }
+        public DbSet<Employee> Employee { get; set; }
 
-        public DbSet<Department> Departments { get; set; }
+        public DbSet<Department> Department { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
+            modelBuilder.Entity<Employee>().ToTable("Empoyee");
         }
     }
 

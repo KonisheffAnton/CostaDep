@@ -22,7 +22,7 @@
                 <td>@Model.SurName</td>
             <td>@Model.FirstName</td>
             <td>@Model.Patronymic</td>
-            <td>@(DateTime.Today.Year - Model.DateOfBirth.Year)</td>
+            <td>@(DateTime.Today.Year - Model.DateOfBirth.Year>0)</td>
             <td>@Model.DocSeries</td>
             <td>@Model.DocNumber</td>
             <td>@Model.Position</td>

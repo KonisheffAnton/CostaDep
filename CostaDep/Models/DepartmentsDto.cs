@@ -6,9 +6,9 @@ namespace Costa.Models
 {
     public class DepartmentsDto
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
-        public int? ParentDepartmentId { get; set; }
+        public Guid? ParentDepartmentId { get; set; }
 
         [MaxLength(10)]
         public string Code { get; set; }

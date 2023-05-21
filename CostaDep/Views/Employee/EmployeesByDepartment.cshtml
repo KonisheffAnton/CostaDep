@@ -34,7 +34,7 @@
                 <td>@employee.SurName</td>
                 <td>@employee.FirstName</td>
                 <td>@employee.Patronymic</td>
-                <td>@(DateTime.Today.Year - employee.DateOfBirth.Year)</td>
+                <td>@(CalculateAge(employee.DateOfBirth))</td>
                 <td>@employee.DocSeries</td>
                 <td>@employee.DocNumber</td>
                 <td>@employee.Position</td>
@@ -51,6 +51,19 @@
 <div>
     <a class="btn" asp-action="Create" asp-controller="Employee">Создать</a>
 </div>
+
+@functions {
+    public int CalculateAge(DateTime dateOfBirth)
+    {
+        DateTime currentDate = DateTime.Today;
+        int age = currentDate.Year - dateOfBirth.Year;
+
+        if (dateOfBirth > currentDate.AddYears(-age))
+            age--;
+
+        return age;
+    }
+}
 
 <script>
     function saveDepartmentId(select) {
