@@ -9,7 +9,7 @@ namespace Costa.MappingProfiles
         public DepartmentMapper()
         {
             CreateMap<DepartmentViewModel, Department>().ReverseMap()
-                .ForMember(src => src.DepartmentViewModelId, opt => opt.MapFrom(dest => dest.Id);   
+                .ForMember(src => src.DepartmentViewModelId, opt => opt.MapFrom(dest => dest.Id));   
         }
     }
 }

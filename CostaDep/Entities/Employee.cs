@@ -8,8 +8,11 @@ namespace Costa.Entities
     public class Employee
     {
         [Key]
-        public decimal Id { get; set; }
+        [Required]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public decimal? Id { get; set; }
 
+        [Required]
         public Guid DepartmentId { get; set; }
 
         [Required]

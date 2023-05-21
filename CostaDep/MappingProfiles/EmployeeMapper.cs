@@ -8,8 +8,7 @@ namespace Costa.MappingProfiles
     {
         public EmployeeMapper()
         {
-            CreateMap<EmployeeViewModel, Employee>()
-                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.EmployeeViewModelId));
+            CreateMap<EmployeeViewModel, Employee>();
             CreateMap<Employee, EmployeeViewModel>()
                 .ForMember(dest => dest.EmployeeViewModelId, opt => opt.MapFrom(src => src.Id));
         }
